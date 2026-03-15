@@ -1,42 +1,48 @@
 import './App.css';
+import data from './CollegeBasketballTeams.json';
 
-const famMembers = [
-  { name: 'Mom', talents: 'organizing', age: 44 },
-  { name: 'Dad', talents: 'helping me with homework', age: 49 },
-  { name: 'Allison', talents: 'animation, coding, math', age: 20 },
-  { name: 'Izzy', talents: 'teaching, making friends, cleaning', age: 18 },
-];
-
-function Welcome() {
-  const helloWorld = 'Hello, World!';
-
-  return <h1>You had me at "{helloWorld}"</h1>;
-}
-
-function FamMember({
-  name,
-  talents,
-  age,
-}: {
-  name: string;
-  talents: string;
-  age: number;
-}) {
+function Header() {
   return (
     <>
-      <img />
-      <h3>{name}</h3>
-      <p>Talents: {talents}</p>
-      <p>Age: {age}</p>
+      <h1>March Madness 2025</h1>
+      <p>Browse all NCAA Basketball teams</p>
     </>
   );
 }
 
-function FamList() {
+function TeamCard({
+  school,
+  name,
+  city,
+  state,
+}: {
+  school: string;
+  name: string;
+  city: string;
+  state: string;
+}) {
   return (
     <>
-      {famMembers.map((famMember) => (
-        <FamMember {...famMember} />
+      <h3>{school}</h3>
+      <p>{name}</p>
+      <p>
+        {city}, {state}
+      </p>
+    </>
+  );
+}
+
+function TeamList() {
+  return (
+    <>
+      {data.teams.map((team) => (
+        <TeamCard
+          key={team.tid}
+          school={team.school}
+          name={team.name}
+          city={team.city}
+          state={team.state}
+        />
       ))}
     </>
   );
@@ -45,8 +51,8 @@ function FamList() {
 function App() {
   return (
     <>
-      <Welcome />
-      <FamList />
+      <Header />
+      <TeamList />
     </>
   );
 }
