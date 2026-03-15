@@ -3,10 +3,10 @@ import data from './CollegeBasketballTeams.json';
 
 function Header() {
   return (
-    <>
+    <div className="header">
       <h1>March Madness 2025</h1>
       <p>Browse all NCAA Basketball teams</p>
-    </>
+    </div>
   );
 }
 
@@ -22,19 +22,19 @@ function TeamCard({
   state: string;
 }) {
   return (
-    <>
+    <div className="team-card">
       <h3>{school}</h3>
-      <p>{name}</p>
-      <p>
+      <p className="mascot">{name}</p>
+      <p className="location">
         {city}, {state}
       </p>
-    </>
+    </div>
   );
 }
 
 function TeamList() {
   return (
-    <>
+    <div className="team-list">
       {data.teams.map((team) => (
         <TeamCard
           key={team.tid}
@@ -44,7 +44,7 @@ function TeamList() {
           state={team.state}
         />
       ))}
-    </>
+    </div>
   );
 }
 
